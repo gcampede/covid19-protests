@@ -18,7 +18,9 @@ fviz_nbclust(mexico_events[c("LATITUDE", "LONGITUDE")], kmeans, method = "wss", 
   geom_vline(xintercept = 4, linetype = 2)
 #labs(subtitle = "Elbow method")
 
-
+''' Run k-means. IMPORTANT NOTE: due to the randomness of the centroid selection process, the cluster labels will be different every time the 
+script is run, therefore one has to check that the cluster assignments match some specific characteristics that are
+used in other scripts. '''
 
 mexico_kmeans <- kmeans(mexico_events[c("LATITUDE", "LONGITUDE")], 4, nstart=25) # RUN PROPER K-MEANS
 print(mexico_kmeans)
@@ -54,5 +56,9 @@ mexico_map + geom_point(data=mexico_events,aes(x=LONGITUDE, y=LATITUDE, color=as
         legend.title = element_text(color = "black", size = 18),
         legend.text = element_text(color = "black", size = 18))+
   xlab("Longitude")+
-  ylab("Latitude")+
-  scale_colour_discrete("Cluster")
+  ylab("Latitude")
+
+
+
+
+
